@@ -47,7 +47,7 @@ nav#menu ul{
 
 nav#menu a {
   text-decoration: none;
-  color: var(--destaque-inverso);
+  color: var(--texto-inverso);
   font-weight: 600;
   padding: 12px 15px;
   border-radius: 5px;
@@ -58,3 +58,78 @@ nav#menu a:hover{ /* quando passar o mouse por cima*/
   background-color: var(--destaque-inverso);
   color: var(--destaque)
 }
+
+main{
+  display: grid;
+  grid-template-columns: auto 90vw auto;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+
+section#ficha {
+  background-color: var(--fundo-card);
+  padding: 20px;
+  border-radius: 8px;
+  grid-column: 2; /* umm espaçoi em cada lateral e o conteúdo no meio*/
+}
+
+section#ficha img.foto{
+  width: 200px;
+  aspect-ratio: 1/1; /* deixa a img quadrada*/
+  object-fit: cover; /*ajusta a img dentro do quadrado*/
+  overflow: hidden; /*esconde oq sobrar para fora*/
+  border-radius: 50%; /* deixa a img arrendondada*/
+  border: 5px solid var(--fundo-card); /* cor e espessura da borda de dentro */
+  outline: 5px solid var(--destaque);/* cor e espessura da borda de fora */
+  display: block; /*centraliza a img*/
+  margin: auto; /*centraliza a img*/
+  margin-bottom: 15px; /* espaço entre a img e o texto*/
+}
+
+section#ficha h1{
+  color: var(--destaque);
+  margin: 15px 0;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+div#social{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6em; /* 1.6 × 16px = 25.6px 1.6em = 26px */
+  gap: 15px; /*15px = 0.94em*/
+  margin-top: 15px;
+}
+
+div#social a {
+  color: var(--destaque);
+}
+
+div#social a:hover{ /* quando passar o mouse por cima do link*/
+  color: var(--destaque-inverso);
+
+}
+
+/* #social a {
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+
+ cores individuais para cada icone 
+.fa-github {
+    color: #000000;
+}
+
+.fa-youtube {
+    color: #ff0000;
+}
+
+.fa-square-instagram {
+    color: #e1306c;
+}
+
+.fa-sitemap {
+    color: #0077b5;
+} */
