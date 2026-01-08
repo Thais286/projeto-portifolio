@@ -23,11 +23,21 @@
     --fundo-card: #ffffff;
 }
 
+body.escuro{
+  --fundo-principal: #222222;
+  --texto: #e0e0e0;
+  --texto-inverso: #333333;
+  --destaque:#ff5522;
+  --destaque-inverso: #a73917;
+  --fundo-card: #444444;
+}
+
 body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     line-height: 1.5em;
     background-color: var(--fundo-principal);
     color: var(--texto);
+    transition: background-color 0.5s, color 0.5s;
 }
 
 header{
@@ -48,6 +58,8 @@ folha com z-index: 1 → fica acima
 folha com z-index: 10 → fica bem mais acima
 
 👉 Quanto maior o número, mais “na frente” o elemento fica. */ 
+
+   width: 100%;
 }
 
 nav#menu ul{
@@ -278,18 +290,28 @@ footer a:hover{
 
   main{
       grid-template-columns: auto 300px 1fr auto;
+      gap: 30px;
+      align-items: start; /* Impede que os elementos estiquem verticalmente */
+    }
   }
 
   section#ficha{
-      grid-column: 2 / 3;
+      grid-column: 2 /3;
       height: fit-content;
       position: sticky;
-      top: 65px
+      top: 80px;
+      height:auto;
   }
 
   section#detalhes{
-      grid-template-columns: 1fr 1fr;
+      grid-column: 3;
+      display: block;
   }
+
+  #skill-container{
+    grid-template-columns: 1fr 1fr;
+  }
+
     #projeto-container .projeto {
         flex-direction: row-reverse;  /* Foto na direita, texto na esquerda */
         justify-content: space-between;
