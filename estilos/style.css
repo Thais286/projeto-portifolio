@@ -37,6 +37,17 @@ header{
   display: flex;
   justify-content: flex-end;
   align-content: center;
+  position: sticky; /* grudado*/
+  top: 0;
+  z-index: 1; /*serve para controlar quem fica por cima de quem quando elementos se sobrepõem na tela. Pensa nos elementos como folhas empilhadas:
+
+folha com z-index: 0 → fica embaixo
+
+folha com z-index: 1 → fica acima
+
+folha com z-index: 10 → fica bem mais acima
+
+👉 Quanto maior o número, mais “na frente” o elemento fica. */ 
 }
 
 nav#menu ul{
@@ -211,55 +222,75 @@ article#video .video-container{
   background-color: var(--fundo-principal);
 }
 
-#projeto-container{
-  display: flex;
-  flex-direction: column-reverse;
-  gap: 20px;
+/* Container que agrupa os projetos */
+#projeto-container {
+    display: flex;
+    flex-direction: column-reverse; /* Recentes primeiro */
+    gap: 20px;
 }
 
-#projeto-container .projeto{
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  background-color: var(--fundo-principal);
-  padding: 10px;
-  border-radius: 8px;
-  border-left: 5px solid var(--destaque-inverso);
-  transition: border-color 0.5s, border-width 0.5s;
+/* O card do projeto */
+#projeto-container .projeto {
+    display: flex;
+    flex-direction: column; /* Mobile: foto em cima, texto embaixo */
+    gap: 15px;
+    background-color: var(--fundo-principal);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 5px solid var(--destaque-inverso);
 }
 
-#projeto-container .projeto:hover{
-  border-color: var(--destaque);
-  border-left-width: 15px;
-  cursor: pointer;
+/* A MOLDURA AZUL (A div que envolve a imagem) */
+#projeto-container .foto {
+    background-color: var(--destaque); /* Fundo azul */
+    padding: 5px;                     /* Espessura da borda azul */
+    border-radius: 10px;              /* Arredondamento da moldura */
+    line-height: 0;                   /* Remove espaços fantasmas */
 }
 
-#projeto-container .foto{
-  width: 100%;
-  aspect-ratio: 16/9;
-  object-fit: cover;
-  overflow: hidden;
-  border-radius: 8px;
+/* A IMAGEM propriamente dita */
+#projeto-container .foto img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 5px;               /* Arredondamento da imagem */
 }
 
-@media screen and (min-width: 768px){
+footer{
+  background-color: var(--destaque);
+  color: var(--texto-inverso);
+  text-align: center;
+  padding: 15px;
+}
 
-  #skill-container{
-    grid-template-columns: 1fr 1fr;
-  }
+footer a {
+  color: var(--texto-inverso);
+  text-decoration: none;
+  font-weight: bold;
+}
 
-  #projeto-container .projeto{
-    flex-direction: row-reverse;
-    justify-content: space-between;
-  }
+footer a:hover{
+  color: var(--destaque-inverso);
+}
 
-  #projeto-container .projeto-info{
-    max-width: 80%;
-  }
+/* RESPONSIVIDADE (Desktop) */
+@media screen and (min-width: 768px) {
+    #projeto-container .projeto {
+        flex-direction: row-reverse;  /* Foto na direita, texto na esquerda */
+        justify-content: space-between;
+        align-items: center;
+    }
 
-  #projeto-container .foto{
-    aspect-ratio: 1/1;
-    max-width: 20%;
-    max-height: 200px;
-  }
+    #projeto-container .projeto-info {
+        max-width: 75%;
+    }
+
+    #projeto-container .foto {
+        max-width: 20%;               /* Tamanho da miniatura no desktop */
+        aspect-ratio: 1/1;            /* Deixa o azul quadradinho */
+    }
+
+    #projeto-container .foto img {
+        aspect-ratio: 1/1;            /* Deixa a foto quadradinha */
+    }
 }
